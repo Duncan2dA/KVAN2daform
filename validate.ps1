@@ -34,7 +34,7 @@ if (Test-Path -LiteralPath $rootIndexPath) {
     foreach ($pattern in @(
         'Kom werken bij 2dA!',
         'Banenmarkt Rijk van Nijmegen',
-        'Dinsdag 10 maart 2026',
+        'Dinsdag 10 maart 2027',
         'formspree.io'
     )) {
         if ($rootIndex -notmatch [regex]::Escape($pattern)) {

@@ -1,4 +1,4 @@
-$ErrorActionPreference = 'Stop'
+﻿$ErrorActionPreference = 'Stop'
 
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $errors = New-Object System.Collections.Generic.List[string]
@@ -34,7 +34,7 @@ if (Test-Path -LiteralPath $rootIndexPath) {
     foreach ($pattern in @(
         'Kom werken bij 2dA!',
         'Banenmarkt Rijk van Nijmegen',
-        'Dinsdag 10 maart 2027',
+        'Dinsdag 10 maart 2026',
         'formspree.io'
     )) {
         if ($rootIndex -notmatch [regex]::Escape($pattern)) {

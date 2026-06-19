@@ -1,585 +1,506 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2dA - Werken bij een sociale onderneming</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { box-sizing: border-box; }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-        }
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2dA · Archiefcongres 2026 — Digitalisering die toegang mogelijk maakt</title>
+<meta name="description" content="2dA op het KVAN Archiefcongres 2026. Fijn dat je langskwam — laat je gegevens achter en we nemen snel contact op over digitalisering, restauratie, metadata en AI voor archieven en erfgoed.">
 
-        /* Header */
-        header {
-            background-color: #0a3d62;
-            color: white;
-            padding: 20px 0;
-        }
-        .header-content {
-            display: flex;
-            align-items: center;
-        }
-        .tagline {
-            color: #00b2ff;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, #0a3d62 0%, #1a6fa3 100%);
-            color: white;
-            padding: 50px 0 40px;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            line-height: 1.3;
-        }
-        .hero p {
-            font-size: 1.15rem;
-            max-width: 750px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-        .event-badge {
-            display: inline-flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            background: rgba(255,255,255,0.12);
-            border-radius: 10px;
-            padding: 18px 30px;
-            margin-top: 10px;
-        }
-        .event-badge span {
-            font-size: 1rem;
-            font-weight: 600;
-        }
+<style>
+  :root{
+    --ink:#0a1422;
+    --ink-2:#0e1c30;
+    --ink-3:#142840;
+    --line:rgba(125,165,205,.16);
+    --line-strong:rgba(125,165,205,.30);
+    --blue:#00b2ff;
+    --blue-soft:#4cc6ff;
+    --amber:#d9a45b;
+    --text:#e8eff7;
+    --muted:#90a4bd;
+    --white:#ffffff;
+    --ok-bg:rgba(46,196,182,.12);
+    --ok-line:rgba(46,196,182,.45);
+    --ok-text:#7ff0e2;
+    --err-bg:rgba(255,99,99,.10);
+    --err-line:rgba(255,99,99,.4);
+    --err-text:#ffb4b4;
+    --maxw:1140px;
+  }
 
-        /* Banner */
-        .welcome-banner {
-            background-color: #e8f4fd;
-            border-left: 4px solid #3498db;
-            padding: 20px 24px;
-            margin: 30px auto;
-            max-width: 860px;
-            border-radius: 4px;
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-        .welcome-banner .icon {
-            color: #3498db;
-            font-size: 26px;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        .welcome-banner h2 {
-            margin: 0 0 6px;
-            font-size: 1.15rem;
-            color: #0a3d62;
-        }
-        .welcome-banner p { margin: 0; font-size: 0.95rem; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
 
-        /* Vacancies */
-        .vacancies {
-            padding: 50px 0 20px;
-        }
-        .vacancies h2 {
-            text-align: center;
-            font-size: 1.8rem;
-            color: #0a3d62;
-            margin-bottom: 10px;
-        }
-        .vacancies .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 35px;
-        }
-        .vacancy-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        @media (min-width: 640px) {
-            .vacancy-grid { grid-template-columns: 1fr 1fr; }
-        }
-        @media (min-width: 900px) {
-            .vacancy-grid { grid-template-columns: 1fr 1fr 1fr; }
-        }
-        .vacancy-card {
-            background: white;
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.09);
-            padding: 22px;
-            border-top: 4px solid #3498db;
-            transition: transform 0.15s, box-shadow 0.15s;
-        }
-        .vacancy-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.13);
-        }
-        .vacancy-card.green { border-top-color: #2ecc71; }
-        .vacancy-card.orange { border-top-color: #e67e22; }
-        .vacancy-tag {
-            display: inline-block;
-            background: #eaf4fb;
-            color: #1a6fa3;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 3px 10px;
-            border-radius: 20px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-        }
-        .vacancy-card.green .vacancy-tag { background: #eafaf1; color: #27ae60; }
-        .vacancy-card.orange .vacancy-tag { background: #fef5ec; color: #c0392b; }
-        .vacancy-card h3 { margin: 0 0 8px; font-size: 1.05rem; color: #0a3d62; }
-        .vacancy-card p { font-size: 0.9rem; color: #555; margin: 0 0 14px; }
-        .vacancy-card ul {
-            margin: 0 0 14px;
-            padding-left: 18px;
-            font-size: 0.88rem;
-            color: #555;
-        }
-        .vacancy-card ul li { margin-bottom: 4px; }
-        .vacancy-hours {
-            font-size: 0.85rem;
-            color: #888;
-            font-weight: 500;
-            border-top: 1px solid #f0f0f0;
-            padding-top: 10px;
-            margin-top: auto;
-        }
+  body{
+    margin:0;
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--ink);
+    color:var(--text);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
 
-        /* Why 2dA */
-        .why-section {
-            background: #0a3d62;
-            color: white;
-            padding: 50px 0;
-            margin: 40px 0 0;
-        }
-        .why-section h2 {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 35px;
-        }
-        .why-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        @media (min-width: 768px) {
-            .why-grid { grid-template-columns: repeat(4, 1fr); }
-        }
-        .why-item {
-            text-align: center;
-            padding: 20px 10px;
-        }
-        .why-icon {
-            font-size: 2.4rem;
-            margin-bottom: 12px;
-        }
-        .why-item h4 { margin: 0 0 6px; font-size: 0.95rem; color: #00b2ff; }
-        .why-item p { margin: 0; font-size: 0.85rem; opacity: 0.85; }
+  h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;line-height:1.1;letter-spacing:-.01em}
 
-        /* SROI block */
-        .sroi-block {
-            background: #eafaf1;
-            border-left: 4px solid #2ecc71;
-            border-radius: 4px;
-            padding: 22px 24px;
-            margin: 40px auto;
-            max-width: 860px;
-        }
-        .sroi-block h3 { margin: 0 0 8px; color: #1a7a40; font-size: 1.05rem; }
-        .sroi-block p { margin: 0; font-size: 0.92rem; color: #333; }
+  a{color:inherit}
+  img{max-width:100%;display:block}
 
-        /* Contact Form */
-        .contact-section { padding: 50px 0 60px; }
-        .contact-section h2 {
-            text-align: center;
-            font-size: 1.8rem;
-            color: #0a3d62;
-            margin-bottom: 8px;
-        }
-        .contact-section .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-        }
-        .contact-form {
-            background: white;
-            padding: 32px;
-            border-radius: 6px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            max-width: 620px;
-            margin: 0 auto;
-        }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-        @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
-        .form-group { margin-bottom: 18px; }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            font-size: 0.88rem;
-            color: #555;
-        }
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 0.93rem;
-            transition: border-color 0.2s;
-        }
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #3498db;
-        }
-        .form-group textarea { min-height: 90px; resize: vertical; }
-        .submit-button {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 13px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 700;
-            width: 100%;
-            font-size: 1rem;
-            letter-spacing: 0.02em;
-            transition: background-color 0.2s;
-        }
-        .submit-button:hover { background-color: #2980b9; }
-        .success-message {
-            display: none;
-            background-color: #d4edda;
-            color: #155724;
-            padding: 20px;
-            border-radius: 4px;
-            margin-top: 20px;
-            text-align: center;
-        }
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
-        /* Footer */
-        footer {
-            background-color: #222;
-            color: white;
-            padding: 28px 0;
-        }
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 12px;
-        }
-        @media (min-width: 768px) {
-            .footer-content {
-                flex-direction: row;
-                justify-content: space-between;
-                text-align: left;
-            }
-        }
-        .footer-info { color: #aaa; font-size: 0.88rem; }
-        .footer-info strong { color: #00b2ff; }
-    </style>
+  .eyebrow{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--blue-soft);
+    display:inline-flex;align-items:center;gap:.6em;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--amber);display:inline-block}
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,20,34,.72);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+  .brand{display:flex;align-items:center;gap:16px;min-width:0}
+  .brand img{height:46px;width:auto}
+  .brand .fallback{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem;color:var(--white);
+    letter-spacing:-.02em;
+  }
+  .badge{
+    font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);
+    border:1px solid var(--line);border-radius:100px;padding:7px 14px;white-space:nowrap;
+  }
+  .badge b{color:var(--blue-soft);font-weight:600}
+  @media(max-width:620px){.badge{display:none}}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;padding:84px 0 76px;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(900px 520px at 78% -10%, rgba(0,178,255,.16), transparent 60%),
+      radial-gradient(700px 420px at 8% 110%, rgba(217,164,91,.10), transparent 55%);
+  }
+  /* faint grid texture */
+  .hero::after{
+    content:"";position:absolute;inset:0;z-index:0;opacity:.5;
+    background-image:
+      linear-gradient(var(--line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(900px 600px at 70% 0%,#000 0%,transparent 75%);
+            mask-image:radial-gradient(900px 600px at 70% 0%,#000 0%,transparent 75%);
+  }
+  /* scan-line signature */
+  .scanline{
+    position:absolute;left:0;right:0;top:0;height:130px;z-index:1;pointer-events:none;
+    background:linear-gradient(180deg,transparent,rgba(0,178,255,.10) 45%,rgba(76,198,255,.55) 50%,rgba(0,178,255,.10) 55%,transparent);
+    filter:blur(.4px);
+    animation:scan 7.5s cubic-bezier(.45,.05,.4,1) infinite;
+  }
+  @keyframes scan{
+    0%{transform:translateY(-140px);opacity:0}
+    12%{opacity:1}
+    88%{opacity:1}
+    100%{transform:translateY(760px);opacity:0}
+  }
+
+  .hero-inner{position:relative;z-index:2;max-width:820px}
+  .hero h1{
+    font-size:clamp(2.3rem,6vw,4.1rem);font-weight:600;color:var(--white);
+    margin:22px 0 0;
+  }
+  .hero h1 .grad{
+    background:linear-gradient(100deg,var(--amber) 0%,#e9c98f 18%,var(--blue-soft) 62%,var(--blue) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--muted);max-width:660px;margin:24px 0 0}
+
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+  .btn{
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;
+    border-radius:10px;padding:15px 26px;cursor:pointer;border:1px solid transparent;
+    text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:.2s ease;
+  }
+  .btn-primary{background:var(--blue);color:#04263a;box-shadow:0 0 0 0 rgba(0,178,255,.5)}
+  .btn-primary:hover{background:var(--blue-soft);box-shadow:0 10px 34px -10px rgba(0,178,255,.7);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:var(--text);border-color:var(--line-strong)}
+  .btn-ghost:hover{border-color:var(--blue-soft);color:var(--white)}
+
+  /* event facts strip */
+  .facts{
+    position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:30px 48px;margin-top:54px;
+    padding-top:30px;border-top:1px solid var(--line);
+  }
+  .fact{display:flex;flex-direction:column;gap:3px}
+  .fact .k{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-family:'Space Grotesk',sans-serif}
+  .fact .v{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--white);font-size:1.08rem}
+
+  /* ---------- Welcome / thank-you ---------- */
+  .welcome{padding:8px 0 4px}
+  .welcome-card{
+    display:flex;gap:20px;align-items:flex-start;
+    background:linear-gradient(180deg,var(--ink-2),var(--ink));
+    border:1px solid var(--line);border-left:3px solid var(--amber);
+    border-radius:14px;padding:26px 28px;
+  }
+  .check{
+    flex-shrink:0;width:42px;height:42px;border-radius:11px;
+    background:rgba(217,164,91,.14);color:var(--amber);
+    display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:700;
+  }
+  .welcome-card h2{font-size:1.3rem;color:var(--white);margin:0 0 6px;font-weight:600}
+  .welcome-card p{margin:0;color:var(--muted)}
+
+  /* ---------- Services ---------- */
+  section.services{padding:78px 0 30px}
+  .sec-head{max-width:680px;margin-bottom:42px}
+  .sec-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:600;color:var(--white);margin:16px 0 0}
+  .sec-head p{color:var(--muted);margin:14px 0 0}
+
+  .grid{display:grid;grid-template-columns:1fr;gap:18px}
+  @media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:980px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+  .card{
+    position:relative;background:var(--ink-2);border:1px solid var(--line);
+    border-radius:16px;padding:26px 24px;overflow:hidden;transition:.22s ease;
+  }
+  .card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,var(--blue),transparent);transform:scaleX(0);transform-origin:left;transition:.3s ease;
+  }
+  .card:hover{border-color:var(--line-strong);transform:translateY(-3px);background:var(--ink-3)}
+  .card:hover::before{transform:scaleX(1)}
+  .card .num{font-family:'Space Grotesk',sans-serif;font-size:.78rem;color:var(--blue-soft);letter-spacing:.1em;font-weight:600}
+  .card h3{font-size:1.22rem;font-weight:600;color:var(--white);margin:14px 0 10px}
+  .card p{margin:0;color:var(--muted);font-size:.96rem}
+
+  .card.feature{
+    background:linear-gradient(160deg,rgba(0,178,255,.10),var(--ink-2) 55%);
+    border-color:rgba(0,178,255,.32);
+  }
+  .card.feature .num{color:var(--amber)}
+  .card .tag{
+    display:inline-block;margin-top:14px;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+    font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--blue-soft);
+    border:1px solid rgba(0,178,255,.3);border-radius:100px;padding:4px 11px;
+  }
+
+  /* ---------- Contact ---------- */
+  section.contact{padding:64px 0 90px}
+  .contact-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:start}
+  @media(min-width:900px){.contact-grid{grid-template-columns:.85fr 1.15fr;gap:60px}}
+
+  .contact-intro h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:600;color:var(--white);margin:16px 0 0}
+  .contact-intro p{color:var(--muted);margin:16px 0 0}
+  .contact-lines{margin-top:30px;display:flex;flex-direction:column;gap:14px}
+  .contact-lines a{
+    display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);
+    font-size:.98rem;transition:.2s ease;
+  }
+  .contact-lines a:hover{color:var(--blue-soft)}
+  .contact-lines .ico{
+    width:36px;height:36px;border-radius:9px;background:var(--ink-3);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;color:var(--blue-soft);flex-shrink:0;font-size:1.05rem;
+  }
+
+  .form-panel{
+    background:var(--ink-2);border:1px solid var(--line);border-radius:18px;padding:32px;
+    box-shadow:0 30px 70px -40px rgba(0,0,0,.8);
+  }
+  .field{margin-bottom:18px}
+  .field label{display:block;font-size:.84rem;font-weight:500;color:var(--text);margin-bottom:8px;font-family:'Space Grotesk',sans-serif;letter-spacing:.01em}
+  .field label .opt{color:var(--muted);font-weight:400;letter-spacing:0}
+  .field input,.field textarea{
+    width:100%;background:var(--ink);border:1px solid var(--line);border-radius:10px;
+    padding:13px 15px;color:var(--text);font-family:inherit;font-size:.98rem;transition:.18s ease;
+  }
+  .field input::placeholder,.field textarea::placeholder{color:#5f748d}
+  .field input:focus,.field textarea:focus{
+    outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,178,255,.18);background:#0b1a2c;
+  }
+  .field textarea{min-height:118px;resize:vertical}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .submit{
+    width:100%;border:none;border-radius:11px;padding:15px 20px;cursor:pointer;
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.02rem;
+    background:var(--blue);color:#04263a;transition:.2s ease;margin-top:4px;
+  }
+  .submit:hover:not(:disabled){background:var(--blue-soft);box-shadow:0 12px 30px -12px rgba(0,178,255,.7)}
+  .submit:disabled{opacity:.6;cursor:wait}
+  .form-note{font-size:.78rem;color:var(--muted);margin:14px 2px 0;text-align:center}
+
+  .feedback{display:none;border-radius:11px;padding:16px 18px;margin-top:18px;font-size:.95rem}
+  .feedback.show{display:block}
+  .feedback strong{display:block;margin-bottom:3px;font-family:'Space Grotesk',sans-serif}
+  .feedback.ok{background:var(--ok-bg);border:1px solid var(--ok-line);color:var(--ok-text)}
+  .feedback.err{background:var(--err-bg);border:1px solid var(--err-line);color:var(--err-text)}
+
+  /* ---------- Footer ---------- */
+  footer.site{border-top:1px solid var(--line);padding:40px 0;background:var(--ink-2)}
+  .foot{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+  .foot .left{display:flex;align-items:center;gap:18px}
+  .foot img{height:40px;width:auto}
+  .foot .ctx{font-size:.86rem;color:var(--muted)}
+  .foot .ctx b{color:var(--text);font-weight:600}
+  .foot .copy{font-size:.8rem;color:#5f748d}
+
+  /* reduced motion */
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .scanline{animation:none;opacity:0}
+    .card,.btn,.submit{transition:none}
+  }
+</style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <img src="data:image/png;base64,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" alt="2dA logo" style="height: 80px; margin-right: 40px;">
-                <div class="tagline">Werk met betekenis</div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container">
-            <h1>Kom werken bij 2dA!<br>Een baan met échte impact</h1>
-            <p>Wij zijn een sociale onderneming in digitalisering en archiefbeheer. We bieden betekenisvolle banen aan mensen die een stap willen zetten naar werk.</p>
-            <div class="event-badge">
-                <span>📅 Dinsdag 10 maart 2026</span>
-                <span>🕙 10:00 – 12:00 uur</span>
-                <span>📍 De Vasim, Nijmegen</span>
-                <span>🎟️ Gratis entree</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Welcome Banner -->
-    <div class="container">
-        <div class="welcome-banner">
-            <div class="icon">👋</div>
-            <div>
-                <h2>Welkom op de Banenmarkt Rijk van Nijmegen!</h2>
-                <p>Wij staan vandaag voor u klaar om kennis te maken. Of u nu op zoek bent naar een baan, een leerwerkplek of gewoon wilt oriënteren — kom gerust langs aan onze stand. Wij vertellen u graag meer over de mogelijkheden bij 2dA.</p>
-            </div>
-        </div>
+  <!-- ===== Header ===== -->
+  <header class="site">
+    <div class="wrap nav">
+      <div class="brand">
+        <img src="img/2da_logo_white_text_refined.png" alt="2dA"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="fallback" style="display:none">2dA</span>
+      </div>
+      <span class="badge">Archiefcongres <b>2026</b> · Stand 2dA</span>
     </div>
+  </header>
 
-    <!-- Vacatures -->
-    <section class="vacancies">
-        <div class="container">
-            <h2>Openstaande functies bij 2dA</h2>
-            <p class="subtitle">Wij zoeken gemotiveerde mensen voor onderstaande rollen</p>
-            <div class="vacancy-grid">
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="scanline" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <span class="eyebrow">KVAN Archiefcongres 2026 · 22 juni · Orpheus Apeldoorn</span>
+      <h1>Toegang tot informatie begint bij <span class="grad">goede digitalisering</span>.</h1>
+      <p class="lead">
+        Fijn dat we elkaar spraken op het Archiefcongres. Het thema — recht op toegang tot
+        informatie — is precies waar 2dA dagelijks aan werkt: van kwetsbaar erfgoed tot
+        complete dossiers veilig en vindbaar maken. Laat je gegevens achter, dan denken we
+        graag met je mee.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#contact">Laat je gegevens achter →</a>
+        <a class="btn btn-ghost" href="#diensten">Bekijk onze diensten</a>
+      </div>
 
-                <div class="vacancy-card">
-                    <div class="vacancy-tag">Productie</div>
-                    <h3>Scanoperator</h3>
-                    <p>Digitaliseer historische documenten en archieven op professionele scanapparatuur.</p>
-                    <ul>
-                        <li>Werken met doorvoer- en vlakscanners</li>
-                        <li>Kwaliteitscontrole van scans</li>
-                        <li>Nauwkeurig en zorgvuldig werken</li>
-                    </ul>
-                    <div class="vacancy-hours">⏱ 24 – 40 uur per week</div>
-                </div>
-
-                <div class="vacancy-card green">
-                    <div class="vacancy-tag">Archief</div>
-                    <h3>Archiefmedewerker</h3>
-                    <p>Verwerk, orden en beschrijf archiefmateriaal van gemeenten en culturele instellingen.</p>
-                    <ul>
-                        <li>Inventariseren van archieven</li>
-                        <li>Ordenen en beschrijven voor duurzaam beheer</li>
-                        <li>Affiniteit met geschiedenis is een plus</li>
-                    </ul>
-                    <div class="vacancy-hours">⏱ 20 – 40 uur per week</div>
-                </div>
-
-                <div class="vacancy-card orange">
-                    <div class="vacancy-tag">Restauratie</div>
-                    <h3>Restauratiemedewerker</h3>
-                    <p>Herstel en conserveer kwetsbare historische documenten en kaarten in ons restauratieatelier.</p>
-                    <ul>
-                        <li>Werken met papier en historisch materiaal</li>
-                        <li>Precisiewerk in rustige omgeving</li>
-                        <li>Interne opleiding en begeleiding</li>
-                    </ul>
-                    <div class="vacancy-hours">⏱ 20 – 32 uur per week</div>
-                </div>
-
-                <div class="vacancy-card">
-                    <div class="vacancy-tag">Kwaliteit</div>
-                    <h3>Kwaliteitscontroleur</h3>
-                    <p>Controleer gedigitaliseerde bestanden op kwaliteit en volledigheid volgens Metamorfoze-normen.</p>
-                    <ul>
-                        <li>Visuele inspectie van scans</li>
-                        <li>Vastlegging in kwaliteitssystemen</li>
-                        <li>Oog voor detail vereist</li>
-                    </ul>
-                    <div class="vacancy-hours">⏱ 24 – 40 uur per week</div>
-                </div>
-
-                <div class="vacancy-card green">
-                    <div class="vacancy-tag">Logistiek</div>
-                    <h3>Logistiek Medewerker</h3>
-                    <p>Zorg voor ontvangst, transport en registratie van archiefdozen en scanprojecten.</p>
-                    <ul>
-                        <li>Intern transport van archief</li>
-                        <li>Inboeken en uitleverlogistiek</li>
-                        <li>Lichamelijk werk, rijbewijs B vereist</li>
-                    </ul>
-                    <div class="vacancy-hours">⏱ 32 – 40 uur per week</div>
-                </div>
-
-                <div class="vacancy-card orange">
-                    <div class="vacancy-tag">Leer-werkplek</div>
-                    <h3>BBL / Leerwerkplek</h3>
-                    <p>Leer het vak digitalisering of archiefbeheer in de praktijk, gecombineerd met een opleiding.</p>
-                    <ul>
-                        <li>Begeleiding door ervaren collega's</li>
-                        <li>MBO-niveau 2 of 3</li>
-                        <li>Vraag naar de mogelijkheden</li>
-                    </ul>
-                    <div class="vacancy-hours">⏱ 24 – 32 uur per week</div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- SROI Block -->
-    <div class="container">
-        <div class="sroi-block">
-            <h3>🌱 Sociale Onderneming – SROI</h3>
-            <p>2dA is een erkende sociale onderneming. Wij bieden bewust kansen aan mensen met een afstand tot de arbeidsmarkt. Werken bij ons betekent: zorgvuldig en gemotiveerd werken, goede begeleiding krijgen en bijdragen aan het behoud van cultureel erfgoed voor toekomstige generaties.</p>
-        </div>
+      <div class="facts">
+        <div class="fact"><span class="k">Wanneer</span><span class="v">Maandag 22 juni 2026</span></div>
+        <div class="fact"><span class="k">Waar</span><span class="v">Theater &amp; Congres Orpheus</span></div>
+        <div class="fact"><span class="k">Thema</span><span class="v">Recht op toegang tot informatie</span></div>
+      </div>
     </div>
+  </section>
 
-    <!-- Why 2dA -->
-    <section class="why-section">
-        <div class="container">
-            <h2>Waarom werken bij 2dA?</h2>
-            <div class="why-grid">
-                <div class="why-item">
-                    <div class="why-icon">🏛️</div>
-                    <h4>Zinvol werk</h4>
-                    <p>Bewaar het cultureel erfgoed van Nederland voor toekomstige generaties</p>
-                </div>
-                <div class="why-item">
-                    <div class="why-icon">🤝</div>
-                    <h4>Goede begeleiding</h4>
-                    <p>Persoonlijke coaching en interne doorgroeimogelijkheden</p>
-                </div>
-                <div class="why-item">
-                    <div class="why-icon">📚</div>
-                    <h4>Leren op de werkvloer</h4>
-                    <p>Trainingen en opleiding mogelijk naast uw werkzaamheden</p>
-                </div>
-                <div class="why-item">
-                    <div class="why-icon">💚</div>
-                    <h4>Inclusieve cultuur</h4>
-                    <p>Iedereen telt mee – we werken vanuit vertrouwen en respect</p>
-                </div>
-            </div>
+  <!-- ===== Welcome / thank-you ===== -->
+  <div class="wrap welcome">
+    <div class="welcome-card">
+      <div class="check" aria-hidden="true">✓</div>
+      <div>
+        <h2>Bedankt voor je bezoek aan onze stand</h2>
+        <p>We waarderen je interesse. Vul het formulier in voor meer informatie of om een
+           afspraak te maken voor een persoonlijk gesprek — we nemen snel contact met je op.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Services ===== -->
+  <section class="services" id="diensten">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Wat we doen</span>
+        <h2>Van scanstraat tot bruikbare digitale informatiebron</h2>
+        <p>We starten niet bij een standaard scanstraat, maar bij je materiaal, structuur en
+           gebruik. Restauratoren, archivarissen en ICT-specialisten kijken samen mee.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <span class="num">01</span>
+          <h3>Scanning on demand</h3>
+          <p>Precies de stukken digitaliseren die nú nodig zijn, ondersteund door ons eigen
+             platform dat lokaal of hybride draait en piekdruk opvangt.</p>
         </div>
-    </section>
 
-    <!-- Contact Form -->
-    <section class="contact-section">
-        <div class="container">
-            <h2>Interesse? Laat uw gegevens achter</h2>
-            <p class="subtitle">Wij nemen zo snel mogelijk contact met u op voor een kennismakingsgesprek</p>
-
-            <div class="contact-form">
-                <iframe name="hidden_iframe" style="display:none;"></iframe>
-                <form id="contactForm"
-                      action="https://formspree.io/f/xanodjkz"
-                      method="POST"
-                      target="hidden_iframe">
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Naam *</label>
-                            <input type="text" id="name" name="name" placeholder="Uw volledige naam" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Telefoonnummer *</label>
-                            <input type="tel" id="phone" name="phone" placeholder="06 - ..." required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">E-mailadres *</label>
-                        <input type="email" id="email" name="email" placeholder="uw@email.nl" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="interest">Interesse in functie</label>
-                        <select id="interest" name="interest">
-                            <option value="">-- Selecteer een functie --</option>
-                            <option>Scanoperator</option>
-                            <option>Archiefmedewerker</option>
-                            <option>Restauratiemedewerker</option>
-                            <option>Kwaliteitscontroleur</option>
-                            <option>Logistiek Medewerker</option>
-                            <option>BBL / Leerwerkplek</option>
-                            <option>Anders / Oriënterend</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Vertel ons iets over uzelf (optioneel)</label>
-                        <textarea id="message" name="message" placeholder="Bijv. uw achtergrond, beschikbaarheid of vragen..."></textarea>
-                    </div>
-
-                    <input type="hidden" name="_subject" value="Banenmarkt Nijmegen 10 maart 2026 – nieuwe interesse">
-                    <button type="submit" class="submit-button">✉ Stuur mijn gegevens</button>
-                </form>
-
-                <div id="successMessage" class="success-message">
-                    <p style="font-size:1.5rem; margin:0 0 8px;">✅</p>
-                    <p><strong>Bedankt voor uw interesse!</strong></p>
-                    <p>We nemen zo snel mogelijk contact met u op voor een kennismakingsgesprek.</p>
-                </div>
-            </div>
+        <div class="card">
+          <span class="num">02</span>
+          <h3>Erfgoed &amp; Metamorfoze</h3>
+          <p>Kwetsbare collecties digitaliseren volgens de hoogste kwaliteitsnormen, met oog
+             voor behoud, reproduceerbaarheid en beeldkwaliteit.</p>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div style="display:flex; align-items:center; gap:20px;">
-                    <img src="data:image/png;base64,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" alt="2dA logo" style="height:60px;">
-                </div>
-                <div class="footer-info">
-                    <strong>Banenmarkt Rijk van Nijmegen</strong><br>
-                    10 maart 2026 · De Vasim, Nijmegen
-                </div>
-                <div class="footer-info">
-                    &copy; 2026 2dA B.V. · Alle rechten voorbehouden
-                </div>
-            </div>
+        <div class="card">
+          <span class="num">03</span>
+          <h3>Restauratie &amp; conservering</h3>
+          <p>Beschadigd of kwetsbaar archiefmateriaal stabiliseren, conserveren en behandelen.
+             Inclusief het voorbereidend werk dat nodig is om collecties veilig te digitaliseren.</p>
         </div>
-    </footer>
 
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            var form = this;
-            var submitBtn = form.querySelector('.submit-button');
+        <div class="card">
+          <span class="num">04</span>
+          <h3>Archiefbewerking &amp; metadata</h3>
+          <p>Ordenen, beschrijven en verrijken — inclusief OCR en HTR voor handschrift — voor
+             betere vindbaarheid en een sterke digitale basis.</p>
+        </div>
 
-            // Disable button to prevent double submit
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Bezig met verzenden...';
+        <div class="card feature">
+          <span class="num">05</span>
+          <h3>AI-diensten &amp; lokale AI-agenten</h3>
+          <p>Veilig en lokaal zoeken, samenvatten en vragen stellen over je eigen documenten
+             en archiefdata. Praktische AI, direct bruikbaar.</p>
+          <span class="tag">Nieuw</span>
+        </div>
 
-            // Send via fetch to Formspree
-            fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            })
-            .then(function(response) {
-                if (response.ok) {
-                    // Hide form, show success message
-                    form.style.display = 'none';
-                    document.getElementById('successMessage').style.display = 'block';
-                } else {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = '✉ Stuur mijn gegevens';
-                    alert('Er is iets misgegaan. Probeer het opnieuw.');
-                }
-            })
-            .catch(function() {
-                submitBtn.disabled = false;
-                submitBtn.textContent = '✉ Stuur mijn gegevens';
-                alert('Er is iets misgegaan. Controleer uw internetverbinding.');
-            });
+        <div class="card">
+          <span class="num">06</span>
+          <h3>Archief- &amp; data-opslag</h3>
+          <p>Veilige bewaring met snelle opvraag, metadata, scanning on demand en directe
+             digitale toegang wanneer je het nodig hebt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            e.preventDefault();
-        });
-    </script>
+  <!-- ===== Contact ===== -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-intro">
+        <span class="eyebrow">Neem contact op</span>
+        <h2>Laat je gegevens achter</h2>
+        <p>Vertel kort waar je mee bezig bent. We nemen zo snel mogelijk contact met je op —
+           vrijblijvend en zonder verplichtingen.</p>
+
+        <div class="contact-lines">
+          <a href="mailto:info@2da.nl">
+            <span class="ico" aria-hidden="true">✉</span>
+            <span>info@2da.nl</span>
+          </a>
+          <a href="https://www.2da.nl" target="_blank" rel="noopener">
+            <span class="ico" aria-hidden="true">↗</span>
+            <span>www.2da.nl</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-panel">
+        <form id="contactForm" action="https://formspree.io/f/xanodjkz" method="POST" novalidate>
+
+          <!-- honeypot (verborgen voor mensen, vangt bots) -->
+          <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="hidden" name="_subject" value="Nieuw contactverzoek — Archiefcongres 2026">
+
+          <div class="field">
+            <label for="name">Naam</label>
+            <input type="text" id="name" name="name" placeholder="Voor- en achternaam" required>
+          </div>
+
+          <div class="field">
+            <label for="company">Organisatie</label>
+            <input type="text" id="company" name="company" placeholder="Bedrijf of instelling" required>
+          </div>
+
+          <div class="field">
+            <label for="email">E-mailadres</label>
+            <input type="email" id="email" name="email" placeholder="naam@organisatie.nl" required>
+          </div>
+
+          <div class="field">
+            <label for="phone">Telefoonnummer <span class="opt">(optioneel)</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78">
+          </div>
+
+          <div class="field">
+            <label for="message">Waar kunnen we je mee helpen? <span class="opt">(optioneel)</span></label>
+            <textarea id="message" name="message" placeholder="Bijv. digitalisering van een collectie, scanning on demand, AI op archiefdata…"></textarea>
+          </div>
+
+          <button type="submit" class="submit" id="submitBtn">Versturen</button>
+          <p class="form-note">We gebruiken je gegevens alleen om contact met je op te nemen.</p>
+        </form>
+
+        <div class="feedback ok" id="okMsg" role="status" aria-live="polite">
+          <strong>Bedankt voor je bericht!</strong>
+          We hebben je aanvraag ontvangen en nemen zo snel mogelijk contact met je op.
+        </div>
+
+        <div class="feedback err" id="errMsg" role="alert" aria-live="assertive">
+          <strong>Er ging iets mis.</strong>
+          Versturen lukte niet. Probeer het zo nog eens, of mail ons rechtstreeks via info@2da.nl.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site">
+    <div class="wrap foot">
+      <div class="left">
+        <img src="img/2da_logo_white_text_refined.png" alt="2dA"
+             onerror="this.style.display='none'">
+        <span class="ctx"><b>KVAN Archiefcongres 2026</b> · 22 juni · Orpheus Apeldoorn</span>
+      </div>
+      <span class="copy">&copy; 2026 2dA — digital preservation. Alle rechten voorbehouden.</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const form    = document.getElementById('contactForm');
+      const btn      = document.getElementById('submitBtn');
+      const okMsg   = document.getElementById('okMsg');
+      const errMsg  = document.getElementById('errMsg');
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // verberg eerdere meldingen
+        okMsg.classList.remove('show');
+        errMsg.classList.remove('show');
+
+        // browser-validatie van de verplichte velden
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        const original = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Versturen…';
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            form.style.display = 'none';
+            okMsg.classList.add('show');
+            okMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            btn.disabled = false;
+            btn.textContent = original;
+            errMsg.classList.add('show');
+          }
+        } catch (err) {
+          btn.disabled = false;
+          btn.textContent = original;
+          errMsg.classList.add('show');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -32,9 +32,9 @@ if (Test-Path -LiteralPath $rootIndexPath) {
     $rootIndex = Get-Content -LiteralPath $rootIndexPath -Raw
 
     foreach ($pattern in @(
-        'Kom werken bij 2dA!',
-        'Banenmarkt Rijk van Nijmegen',
-        'Dinsdag 10 maart 2026',
+        'Archiefcongres 2026',
+        'Toegang tot informatie begint',
+        'Maandag 22 juni 2026',
         'formspree.io'
     )) {
         if ($rootIndex -notmatch [regex]::Escape($pattern)) {
